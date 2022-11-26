@@ -1,11 +1,12 @@
+
 public class TiposEVariaveis {
     public static void main(String[] args) {
+        String nome = args[0];
+        String sobrenome = args[1];
+        final int idade = Integer.valueOf(args[2]);
 
-        byte idade = 123;
-        short ano = 2021;
-        int cep = 21070333; // se começar com zero, talvez tenha que ser outro tipo
-        long cpf = 98765432109L; // se começar com zero, talvez tenha que ser outro tipo
-        float pi = 3.14F;
-        double salario = 1275.33;
+        System.out.println("Ola, me chamo " + nome + " " + sobrenome);
+        System.out.println("Tenho " + idade + " anos ");
+
     }
 }
