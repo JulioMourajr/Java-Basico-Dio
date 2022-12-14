@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -64,7 +65,13 @@ public class ExemploList {
     System.out.println(meusGatos);
     Collections.sort(meusGatos);
     System.out.println(meusGatos);
-
+    Collections.sort(meusGatos, new ComparatorIdade());
+    meusGatos.sort(new ComparatorIdade());
+    System.out.println(meusGatos);
+    Collections.sort(meusGatos, new ComparatorCor());
+    System.out.println(meusGatos);
+    Collections.sort(meusGatos, new ComparatorNomeCorIdade());
+    System.out.println(meusGatos);
   }
 }
 
@@ -112,6 +119,43 @@ class Gatos implements Comparable<Gatos> {
   public int compareTo(Gatos gato) {
     // TODO Auto-generated method stub
     return this.getNome().compareToIgnoreCase(gato.getNome());
+  }
+}
+
+class ComparatorIdade implements Comparator<Gatos> {
+
+  @Override
+  public int compare(Gatos g1, Gatos g2) {
+    // TODO Auto-generated method stub
+    return Integer.compare(g1.getIdade(), g2.getIdade());
+  }
+
+}
+
+class ComparatorCor implements Comparator<Gatos> {
+
+  @Override
+  public int compare(Gatos c1, Gatos c2) {
+    // TODO Auto-generated method stub
+    return c1.getCor().compareToIgnoreCase(c2.getCor());
+  }
+
+}
+
+class ComparatorNomeCorIdade implements Comparator<Gatos> {
+
+  @Override
+  public int compare(Gatos g1, Gatos g2) {
+    // TODO Auto-generated method stub
+    int nome = g1.getNome().compareToIgnoreCase(g2.getNome());
+    if (nome != 0)
+      return nome;
+
+    int cor = g1.getCor().compareToIgnoreCase(g2.getCor());
+    if (cor != 0)
+      return cor;
+
+    return Integer.compare(g1.getIdade(), g2.getIdade());
   }
 
 }
